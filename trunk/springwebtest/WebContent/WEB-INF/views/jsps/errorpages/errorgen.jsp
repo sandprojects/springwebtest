@@ -8,8 +8,10 @@
 </head>
 <body>
 	<H1>Something went wrong..!</H1>
-	There was an error! Don't Panic!!!
 	<BR>
+   There was an error! Don't Panic!!!
+	<BR>
+  <BR>
 	We will be right back...!
 </body>
 </html>
