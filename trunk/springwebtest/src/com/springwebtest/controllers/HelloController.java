@@ -34,15 +34,16 @@ public class HelloController{
 	  //model.addAttribute("message", "Hello Spring MVC Framework!");
 	  model.addAttribute("message", this.testMSG.getMSG());
 	  logger.info("HelloController saying: Packing of model completed...!");
-	  return "hello";
+	  return "views/jsps/hello.jsp";
    }
    
    @RequestMapping(value="/index", method = RequestMethod.GET)
    public String printLang(HttpServletRequest request, HttpServletResponse respons) {
-//      HttpSession sess;
-//      Locale locale;
+
       ModelMap model = new ModelMap();
       model.addAttribute("message", "Index Message - Hello Spring MVC Framework!");
+//      HttpSession sess;
+//      Locale locale;
 //      printHello(model);
 //      String lng=(String)request.getParameter("language");
 //      locale=request.getLocale();
@@ -52,7 +53,7 @@ public class HelloController{
 //      System.out.println("====>Request Locale: "+locale.getDisplayName());
 //      sess=request.getSession();
 //      sess.setAttribute("language", lng);
-      return "index";
+      return "views/jsps/index.jsp";
    }
    
    @RequestMapping(value="/error")

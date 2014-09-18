@@ -2,7 +2,7 @@
  <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
  <log4j:configuration>
     <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="${catalina.home}/webapps/springwebtest/WEB-INF/classes/com/helloweb/logs/audit_main.log" />
+        <param name="File" value="${catalina.home}/webapps/springwebtest/WEB-INF/classes/com/springwebtest/logs/audit_main.log" />
         <param name="immediateFlush" value="true"/>
 		<param name="threshold" value="debug"/>
 		<param name="append" value="false"/>

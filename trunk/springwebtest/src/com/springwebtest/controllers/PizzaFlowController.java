@@ -4,12 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
+//@Controller
 @RequestMapping("/pizza")
 public class PizzaFlowController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String welcomeFlow(){
-		return "pizza/customer/welcome";
+		return "flows/pizza/customer/welcome.jspx";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public String pizzaPhoneTrack(){
+		return "";
 	}
 }

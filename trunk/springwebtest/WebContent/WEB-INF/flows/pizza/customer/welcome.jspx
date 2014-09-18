@@ -1,13 +1,14 @@
 <html xmlns:jsp="http://java.sun.com/JSP/Page"
 xmlns:form="http://www.springframework.org/tags/form">
 
-<jsp:outputomit-xml-declaration="yes"/>
+<jsp:output omit-xml-declaration="yes"/>
 
-<jsp:directive.pagecontentType="text/html;charset=UTF-8"/>
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 
 <head><title>Spizza</title></head>
 <body>
-<h2>WelcometoSpizza!!!</h2>
+<h2>Welcome to Spizza!!!</h2><br />
+<h3>Please enter your ph. no..</h3><br />
 <form:form>
 	<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 	<input type="text" name="phoneNumber"/><br/>
