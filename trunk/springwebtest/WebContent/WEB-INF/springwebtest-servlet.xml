@@ -44,7 +44,18 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	   <property name="prefix" value="/WEB-INF/views/jsps/" />
 	   <property name="suffix" value=".jsp" />
+	   <property name="order" value="2" />
 	</bean>
+	
+	<bean id="viewResolver"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="cache" value="false" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/flows/" />
+        <property name="suffix" value=".jspx" />
+
+        <property name="order" value="1" />
+    </bean>
 	
 	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF/classes/com/springwebtest/configurations/testflows">
 		<flow:flow-location-pattern value="*-flow.xml"/>

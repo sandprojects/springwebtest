@@ -1,6 +1,5 @@
 package com.springwebtest.beans.pizza.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Order{
@@ -10,8 +9,8 @@ public class Order{
 	private Payment payment;
 
 	public Order(){
-		pizzas=new ArrayList<Pizza>();
-		customer=new Customer();
+//		pizzas=new ArrayList<Pizza>();
+//		customer=new Customer();
 	}
 	public Customer getCustomer(){
 	return customer;
