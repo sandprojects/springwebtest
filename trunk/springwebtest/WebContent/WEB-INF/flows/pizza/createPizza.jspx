@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:jsp="http://java.sun.com/JSP/Page">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
 <body>
-<div xmlns:form="http://www.springframework.org/tags/form"
-xmlns:jsp="http://java.sun.com/JSP/Page">
+<div xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page">
 <jsp:output omit-xml-declaration="yes" />
 <jsp:directive.page contentType="text/html; charset=UTF-8"/>
 <h2>CreatePizza</h2>
@@ -24,7 +20,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page">
 <b>Toppings:</b><br/>
 <form:checkboxes path="toppings" items="${toppingsList}" delimiter="&lt;br/&gt;"/><br/><br/>
 <input type="submit" class="button" name="_eventId_addPizza" value="Continue"/>
-<input type="submit"class="button" name="_eventId_cancel" value="Cancel"/>
+<input type="submit" class="button" name="_eventId_cancel" value="Cancel"/>
 </form:form>
 </div>
 </body>

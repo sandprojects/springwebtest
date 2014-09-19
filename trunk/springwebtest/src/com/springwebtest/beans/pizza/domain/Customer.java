@@ -1,6 +1,14 @@
 package com.springwebtest.beans.pizza.domain;
 
-public class Customer {
+import java.io.Serializable;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Customer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name, phoneNumber;
 	String address, city, state, zipCode;
 	

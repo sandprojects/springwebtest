@@ -1,0 +1,12 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page">
+<jsp:output omit-xml-declaration="yes"/>
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Your order...!!</title>
+</head>
+<body>
+		<h2>Showing your order...!!</h2>
+		<br /><![CDATA[<a href="${flowExecutionUrl}&_eventId=createPizza">Add more pizza..!</a>|<a href="${flowExecutionUrl}&_eventId=cancel">Cancel my order..!</a>]]>
+</body>
+</html>

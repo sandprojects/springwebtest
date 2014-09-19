@@ -1,5 +1,8 @@
 package com.springwebtest.beans.pizza.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PizzaFlowActions {
 	
 	public String saveOrder(Order order){
@@ -10,4 +13,13 @@ public class PizzaFlowActions {
 		return true;
 	}
 	
+	public Customer lookupCustomer(String phoneNumber) throws CustomerNotFoundException{
+		
+		throw new CustomerNotFoundException();
+		//return null;
+	}
+	
+	public void addCustomer(Customer customer){
+		return;
+	}
 }
