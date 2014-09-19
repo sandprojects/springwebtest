@@ -1,4 +1,6 @@
-<html xmlns:jsp="http://java.sun.com/JSP/Page">
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 <jsp:output omit-xml-declaration="yes"/>
 <jsp:directive.page contentType="text/html;charset=UTF-8"/>
 <head>
@@ -6,7 +8,24 @@
 <title>Your order...!!</title>
 </head>
 <body>
-		<h2>Showing your order...!!</h2>
-		<br /><![CDATA[<a href="${flowExecutionUrl}&_eventId=createPizza">Add more pizza..!</a>|<a href="${flowExecutionUrl}&_eventId=cancel">Cancel my order..!</a>]]>
+		<h2>Showing your order...!!</h2><br />
+		<div>
+			<c:choose>
+				<c:when test="${order.pizzas.size()==0}">
+					<h3>You have't ordered any pizzas. Please choose "Add new pizza" option below to add a new pizza.</h3>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${order.pizzas}" var="pizza">
+						One <c:out value="${pizza.size}" /> size pizza, with topping contained 
+							<c:forEach items="${pizza.toppings}" var="topping">
+								<c:out value="${topping} " />
+							</c:forEach>
+						<br />
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<br /><![CDATA[<a href="${flowExecutionUrl}&_eventId=createPizza">Add new pizza..!</a>|<a href="${flowExecutionUrl}&_eventId=cancel">Cancel my order..!</a>]]>
+		<c:if test="${order.pizzas.size()!=0}"><br /><br /><![CDATA[<a href="${flowExecutionUrl}&_eventId=checkout">Proceed to payment..!</a>]]></c:if>
 </body>
 </html>

@@ -28,7 +28,7 @@ start-state="identifyCustomer">
 		<transition to="thankCustomer"/>
 	</action-state>
 	
-	<view-state id="thankCustomer">
+	<view-state id="thankCustomer" view="pizza/thankCustomer.jspx">
 		<transition to="endState"/>
 	</view-state>
 	

@@ -11,8 +11,16 @@ public class Order implements Serializable{
 	private static final long serialVersionUID=1L;
 	private Customer customer;
 	private List<Pizza> pizzas;
-	private Payment payment;
+	private boolean payment;
 	
+	public boolean isPayment() {
+		return payment;
+	}
+
+	public void setPayment(boolean payment) {
+		this.payment = payment;
+	}
+
 	public Order(){
 		pizzas=new ArrayList<Pizza>();
 		customer=new Customer();
@@ -37,10 +45,5 @@ public class Order implements Serializable{
 	public float getTotal(){
 		return 0.0f;
 	}
-	public Payment getPayment(){
-		return payment;
-	}
-	public void setPayment(Payment payment){
-	 this.payment=payment;
-	}
+
 }
