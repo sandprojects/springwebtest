@@ -18,10 +18,11 @@ public class Pizza implements Serializable{
 	public void setSize(String size) {
 		this.size = size;
 	}
+
 	public List<Topping> getToppings() {
 		return toppings;
 	}
-	public void setToppings() {
-		this.toppings = Topping.asList();
+	public void setToppings(List<Topping> toppings) {
+		this.toppings = toppings;
 	}
 }

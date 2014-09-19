@@ -22,4 +22,9 @@ public class PizzaFlowActions {
 	public void addCustomer(Customer customer){
 		return;
 	}
+	
+	
+	public boolean verifyPayment(PaymentDetails paymentDetails){
+		return true;
+	}
 }
