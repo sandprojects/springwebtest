@@ -1,8 +1,13 @@
 package com.springwebtest.beans.pizza.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Pizza {
+import org.springframework.stereotype.Component;
+
+@Component
+public class Pizza implements Serializable{
+	private static final long serialVersionUID=1L;
 	
 	String size;
 	List<Topping>  toppings;

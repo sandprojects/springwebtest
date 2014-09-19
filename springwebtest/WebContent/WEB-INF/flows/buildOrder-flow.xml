@@ -5,12 +5,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/webflow
 http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 	<input name="order" required="true"/>
-	<view-state id="showOrder">
+	<view-state id="showOrder" view="pizza/showOrder.jspx">
 		<transition on="createPizza" to="createPizza"/>
 		<transition on="checkout" to="orderCreated"/>
 		<transition on="cancel" to="cancel"/>
 	</view-state>
-	<view-state id="createPizza" model="flowScope.pizza">
+	<view-state id="createPizza" model="flowScope.pizza" view="pizza/createPizza.jspx">
 		<on-entry>
 			<set name="flowScope.pizza" value="new com.springwebtest.beans.pizza.domain.Pizza()"/>
 			<evaluate result="viewScope.toppingsList" expression="T(com.springwebtest.beans.pizza.domain.Topping).asList()"/>

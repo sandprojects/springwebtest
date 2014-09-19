@@ -6,18 +6,17 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 	<var name="customer" class="com.springwebtest.beans.pizza.domain.Customer"/>
 	
-	<view-state id="welcome">
+	<view-state id="welcome" view="pizza/customer/welcome.jspx">
 		<transition on="phoneEntered" to="lookupCustomer"/>
 	</view-state>
 	
 	<action-state id="lookupCustomer">
 		<evaluate result="customer" expression="pizzaFlowActions.lookupCustomer(requestParameters.phoneNumber)"/>
-		<transition to="registrationForm" on-exception="com.springwebtest.beans.pizza.service.CustomerNotFoundException"/>
-		<transition to="registrationForm" on-exception="com.springwebtest.beans.pizza.service.CustomerNotFoundException"/>
+		<transition to="registrationForm" on-exception="com.springwebtest.beans.pizza.domain.CustomerNotFoundException"/>
 		<transition to="customerReady"/>
 	</action-state>
 	
-	<view-state id="registrationForm" model="customer">
+	<view-state id="registrationForm" model="customer" view="pizza/customer/registrationForm.jspx">
 		<on-entry>
 			<evaluate expression="customer.phoneNumber=requestParameters.phoneNumber"/>
 		</on-entry>

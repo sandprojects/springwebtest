@@ -7,6 +7,8 @@
 <title>Hello...</title>
 </head>
 <body>
-	<h2>The welcome message is: ${message}</h2>
+	<h2>The welcome message is: ${message}</h2><br />
+	<a href="/springwebtest/index" >Go to index page...</a><br />
+	<a href="/springwebtest/pizza" >Order a Pizza...</a>
 </body>
 </html>

@@ -4,6 +4,7 @@ package com.springwebtest.beans.pizza.domain;
 
 import java.util.Arrays;
 import java.util.List;
+
 public enum PaymentType {
 	
 	CASH, CHECK, CREDIT_CARD;
