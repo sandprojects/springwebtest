@@ -1,6 +1,9 @@
 package com.springwebtest.beans.pizza.domain;
 
 import java.io.Serializable;
+
+import javax.validation.constraints.Size;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,8 +12,11 @@ public class Customer implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String name, phoneNumber;
+	String phoneNumber;
 	String address, city, state, zipCode;
+	
+	@Size(min=3,max=20,message="The name must be atleast 3 characters long.")
+	String name;
 	
 	public String getName() {
 		return name;
