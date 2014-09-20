@@ -18,13 +18,16 @@
 	
 	 <mvc:default-servlet-handler/>
 	 
-	 <mvc:annotation-driven />
+<!-- 	 <mvc:annotation-driven /> -->
 	 
 	 <mvc:resources mapping="/resources/**" location="/resources/"/>
 	 
 	 <context:component-scan base-package="com.springwebtest" />
 	 
 	 <aop:aspectj-autoproxy />
+	 
+	 <bean id="myBeansValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	 <mvc:annotation-driven validator="myBeansValidator" />
 	 
 	 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="en" />

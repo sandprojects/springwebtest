@@ -20,7 +20,7 @@
 			<form:radiobutton path="paymentType" label="Payment via Check" value="CHECK"/><br/>
 			<form:radiobutton path="paymentType" label="Payment via Credit Card" value="CREDIT_CARD"/>
 		<br/>
-		<b>Toppings:</b><br/>
+		<b>Amount:</b><br/>
 			<form:input path="amount" />
 		<br/><br/>
 		<input type="submit" class="button" name="_eventId_paymentSubmitted" value="Continue"/>
