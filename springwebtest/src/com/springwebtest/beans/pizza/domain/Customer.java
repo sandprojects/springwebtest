@@ -16,15 +16,18 @@ public class Customer implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+//	@Autowired
+//	MessageSource msg;
+	
 	String address, city, state, zipCode;
 	
-	@NotNull(message = "Phone number name is compulsory")
-	@NotBlank(message = "Phone number is compulsory")
+	@NotNull(message = "{welcome.phonenoNullValidation}")
+	@NotBlank(message = "{welcome.phonenoBlankValidation}")
 	String phoneNumber;
 	
-	@Size(min=3, max=50, message="Your fullname must be between 3 and 50 characters long.")
-	@NotNull(message = "First name is compulsory")
-	@NotBlank(message = "First name is compulsory")
+	@Size(min=3, max=50, message="{welcome.nameSizeValidation}")
+	@NotNull(message = "{welcome.nameNullValidation}")
+	@NotBlank(message = "{welcome.nameBlankValidation}")
 	String name;
 	
 	public String getName() {
