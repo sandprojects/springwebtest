@@ -19,6 +19,7 @@
 	 <mvc:default-servlet-handler/>
 	 
 	 <mvc:annotation-driven />
+<!-- 	 <mvc:annotation-driven validator="validator" /> -->
 	 
 	 <mvc:resources mapping="/resources/**" location="/resources/"/>
 	 
@@ -26,12 +27,7 @@
 	 
 	 <aop:aspectj-autoproxy />
 	 
-<!-- 	 <bean id="myBeansValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->
-<!-- 	 <mvc:annotation-driven validator="myBeansValidator" /> -->
 
-<!-- 	<flow:flow-registry flow-builder-services="flowBuilderServices" /> -->
-	<flow:flow-builder-services id="flowBuilderServices" validator="validator" />
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="268435456"/> <!-- 256 megs -->
@@ -48,7 +44,8 @@
 	 </mvc:interceptors>
 
 	<!-- Register the welcome.properties -->
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+<!-- 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"> -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="com.springwebtest.messagebundle.welcome" />
 	</bean>
 	
@@ -59,19 +56,27 @@
 <!-- 		<property name="suffix" value=".jsp" /> -->
 		<property name="order" value="1" />
 	</bean>
-<!-- 	id="viewResolver" -->
-<!-- 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
-<!--         <property name="cache" value="true" /> -->
-<!--         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
-<!--         <property name="prefix" value="/WEB-INF/" /> -->
-<!--         <property name="suffix" value=".jspx" /> -->
+	<!-- 	id="viewResolver" -->
+	<!-- 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
+	<!--         <property name="cache" value="true" /> -->
+	<!--         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+	<!--         <property name="prefix" value="/WEB-INF/" /> -->
+	<!--         <property name="suffix" value=".jspx" /> -->
+	
+	<!--         <property name="order" value="0" /> -->
+	<!--     </bean> -->
+	<!-- 	classes/com/springwebtest/configurations/testflows -->
+	<!-- 	<flow:flow-builder-services id="flowBuilderServices" validator="validator" /> -->
+	<!-- 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->
 
-<!--         <property name="order" value="0" /> -->
-<!--     </bean> -->
-<!-- 	classes/com/springwebtest/configurations/testflows -->
+	<flow:flow-builder-services id="flowBuilderServices" validator="validator" />
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
+<!-- 		<property name="validationMessageSource" ref="messageSource" /> -->
+	</bean>	
+<!-- 	flow-builder-services="flowBuilderServices" -->
 	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF/flows" flow-builder-services="flowBuilderServices" >
 <!-- 		<flow:flow-location-pattern value="*-flow.xml"/> -->
-			<flow:flow-location id="pizza" path="pizza-flow.xml"/>
+			<flow:flow-location id="pizza" path="pizza-flow.xml" />
 			<flow:flow-location id="pizza/customer" path="identifyCustomer-flow.xml"/>
 			<flow:flow-location id="pizza/order" path="buildOrder-flow.xml"/>
 			<flow:flow-location id="pizza/payment" path="payment-flow.xml"/>
