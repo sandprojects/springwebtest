@@ -42,17 +42,20 @@ public class HelloController{
 
       ModelMap model = new ModelMap();
       model.addAttribute("message", "Index Message - Hello Spring MVC Framework!");
-//      HttpSession sess;
-//      Locale locale;
+      HttpSession sess;
+      Locale locale;
 //      printHello(model);
-//      String lng=(String)request.getParameter("language");
-//      locale=request.getLocale();
+      String lng=(String)request.getParameter("language");
+      locale=request.getLocale();
 //      logger.info("Param Locale: "+lng);
 //      logger.info("Request Locale: "+locale.getDisplayName());
-//      System.out.println("====>Param Locale: "+lng);
-//      System.out.println("====>Request Locale: "+locale.getDisplayName());
-//      sess=request.getSession();
-//      sess.setAttribute("language", lng);
+      if (lng==null){
+    	  lng = locale.getLanguage() + "_" + locale.getCountry();
+      }
+      System.out.println("====>Param Locale: "+lng);
+      System.out.println("====>Request Locale: "+locale.getDisplayName());
+      sess=request.getSession();
+      sess.setAttribute("language", lng);
       return "views/jsps/index.jsp";
    }
    

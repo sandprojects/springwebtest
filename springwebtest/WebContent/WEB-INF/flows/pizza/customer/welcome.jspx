@@ -11,8 +11,9 @@ xmlns:form="http://www.springframework.org/tags/form">
 <h3>Please enter your ph. no..</h3><br />
 <form:form>
 	<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
-	<input type="text" name="phoneNumber"/><br/>
+	<input type="text" name="phoneNumber"/><br/><br />
 	<input type="submit" name="_eventId_phoneEntered" value="Lookup Customer"/>
 </form:form>
+<br /><h2>Go to the <a href="/springwebtest/index">index</a> page!!!</h2><br />
 </body>
 </html>
