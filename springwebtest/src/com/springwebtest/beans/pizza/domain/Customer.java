@@ -2,9 +2,12 @@ package com.springwebtest.beans.pizza.domain;
 
 import java.io.Serializable;
 
-//import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class Customer implements Serializable{
@@ -12,10 +15,16 @@ public class Customer implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String phoneNumber;
+	
 	String address, city, state, zipCode;
 	
-//	@Size(min=3,max=20,message="The name must be atleast 3 characters long.")
+	@NotNull(message = "Phone number name is compulsory")
+	@NotBlank(message = "Phone number is compulsory")
+	String phoneNumber;
+	
+	@Size(min=3, max=50, message="Your fullname must be between 3 and 50 characters long.")
+	@NotNull(message = "First name is compulsory")
+	@NotBlank(message = "First name is compulsory")
 	String name;
 	
 	public String getName() {
