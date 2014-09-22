@@ -9,18 +9,25 @@ xmlns:form="http://www.springframework.org/tags/form">
 <head><title>Spizza</title></head>
 <body>
 <h2>Customer Registration</h2>
+<!-- <h3>Your Local is: ${pageContext.response.locale}</h3> 
+<c:out value="${sessionScope.language}"/>
+welcome.springmvc : <spring:message code="welcome.springmvc" text="default text" />
+<h3>Current Local is: ${pageContext.request.locale}</h3>-->
 <form:form commandName="customer">
 <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
-<b>Phone Number:</b><form:input path="phoneNumber"/><br/>
+<b><spring:message code="welcome.phoneno" text="Phone No" />:</b><form:input path="phoneNumber"/><br/>
 <form:errors path="phoneNumber" cssClass="error" /><br/>
-<b>Name:</b><form:input path="name" /><br/>
+<b><spring:message code="welcome.phoneno" text="Name" />:</b><form:input path="name" /><br/>
 	<form:errors path="name" cssClass="error" /><br/>
-<b>Address:</b><form:input path="address" /><br/>
-<b>City:</b><form:input path="city" /><br/>
-<b>State:</b><form:input path="state" /><br/>
-<b>Zip Code:</b><form:input path="zipCode" /><br/>
-<input type="submit" name="_eventId_submit" value="Submit" />
-<input type="submit" name="_eventId_cancel" value="Cancel" />
+<b><spring:message code="welcome.address" text="Address" />:</b><form:input path="address" /><br/>
+<b><spring:message code="welcome.city" text="City" />:</b><form:input path="city" /><br/>
+<b><spring:message code="welcome.state" text="State" />:</b><form:input path="state" /><br/>
+<b><spring:message code="welcome.zip_code" text="Zip Code" />:</b><form:input path="zipCode" /><br/>
+<spring:message code="welcome.submit" text="Submit" var="submitButtonValue" />
+<spring:message code="welcome.cancel" text="Cancel" var="cancelButtonValue" />
+<input type="submit" name="_eventId_submit" value="${submitButtonValue}" />&#160;&#160;&#160;
+<input type="submit" name="_eventId_cancel" value="${cancelButtonValue}" />
 </form:form>
+<br /><h2>Go to the <a href="/springwebtest/index">index</a> page!!!</h2><br />
 </body>
 </html>
