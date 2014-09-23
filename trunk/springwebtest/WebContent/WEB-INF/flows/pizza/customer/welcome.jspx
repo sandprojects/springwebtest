@@ -1,4 +1,5 @@
 <html xmlns:jsp="http://java.sun.com/JSP/Page"
+xmlns:spring="http://www.springframework.org/tags"
 xmlns:form="http://www.springframework.org/tags/form">
 
 <jsp:output omit-xml-declaration="yes"/>
@@ -7,13 +8,15 @@ xmlns:form="http://www.springframework.org/tags/form">
 
 <head><title>Spizza</title></head>
 <body>
-<h2>Welcome to Spizza!!!</h2><br />
-<h3>Please enter your ph. no..</h3><br />
+<h2><spring:message code="message.pizzaWelcome.welcomeTitle" text="Customer Registration" /> Spizza!!!</h2><br />
+<h3><spring:message code="message.pizzaWelcome.enterPh" text="Please enter your phone number" />..</h3>
 <form:form>
 	<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
-	<input type="text" name="phoneNumber"/><br/><br />
-	<input type="submit" name="_eventId_phoneEntered" value="Lookup Customer"/>
+	<input type="text" name="phoneNumber"/>&#160;&#160;
+	<spring:message code="message.pizzaWelcome.submit" text="Submit" var="submitButtonValue" />
+	<input type="submit" name="_eventId_phoneEntered" value="${submitButtonValue}"/>
 </form:form>
-<br /><h2>Go to the <a href="/springwebtest/index">index</a> page!!!</h2><br />
+<br /><h2><spring:message code="message.gentext.please" text="Please" />&#160;<a href="/springwebtest/index"><spring:message code="message.gentext.clickHere" text="Click here" /></a>&#160;<spring:message code="message.gentext.toGo" text="to go" />&#160;<spring:message code="message.indexPage.index" text="index" />&#160;<spring:message code="message.gentext.page" text="page" />!!!</h2><br />
+Language : <a href="?language=en">English</a>|<a href="?language=zh_CN">Chinese</a>
 </body>
 </html>

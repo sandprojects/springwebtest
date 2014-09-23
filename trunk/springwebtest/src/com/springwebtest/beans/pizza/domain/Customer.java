@@ -21,13 +21,13 @@ public class Customer implements Serializable{
 	
 	String address, city, state, zipCode;
 	
-	@NotNull(message = "{welcome.phonenoNullValidation}")
-	@NotBlank(message = "{welcome.phonenoBlankValidation}")
+	@NotNull(message = "{message.customer.phonenoNullValidation}")
+	@NotBlank(message = "{message.customer.phonenoBlankValidation}")
 	String phoneNumber;
 	
-	@Size(min=3, max=50, message="{welcome.nameSizeValidation}")
-	@NotNull(message = "{welcome.nameNullValidation}")
-	@NotBlank(message = "{welcome.nameBlankValidation}")
+	@Size(min=3, max=50, message="{message.customer.nameSizeValidation}")
+	@NotNull(message = "{message.customer.nameNullValidation}")
+	@NotBlank(message = "{message.customer.nameBlankValidation}")
 	String name;
 	
 	public String getName() {

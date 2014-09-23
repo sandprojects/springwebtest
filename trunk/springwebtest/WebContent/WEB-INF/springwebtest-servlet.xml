@@ -45,7 +45,7 @@
 
 	<!-- Register the welcome.properties -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="com.springwebtest.messagebundle.welcome" />
+		<property name="basename" value="com.springwebtest.messagebundle.message" />
 	</bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
