@@ -20,7 +20,7 @@ public class UserMgmtController {
 	   public String addNewUser(Model model){
 		   model.addAttribute(new User());
 		   System.out.println("=======>Got request...!!!!");
-		   return "views/jsps/userRegistration.jsp";
+		   return "views/jsps/userRegistration.jspx";
 	   }
 	
 	   @RequestMapping(value="/addUser", method=RequestMethod.POST)
@@ -28,7 +28,7 @@ public class UserMgmtController {
 		   System.out.println("=======>In post..");
 	       if(bindingResult.hasErrors()){
               System.out.println("=======>In post error..");
-	          return "views/jsps/userRegistration.jsp";
+	          return "views/jsps/userRegistration.jspx";
 	       }
 	       System.out.println("=======>In post success..");
 	       return "redirect:/hello/";
