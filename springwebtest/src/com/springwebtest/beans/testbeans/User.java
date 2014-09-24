@@ -15,16 +15,19 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Size(min=3, max=50, message="{message.customer.nameSizeValidation}")
+	@NotBlank(message = "{message.customer.nameBlankValidation}")
+	@Size(min=3, max=50, message="{message.genForm.nameBlankValidation}")
 	String fullName;
 	
-	@Size(min=3, max=20, message="Username must be between 3 and 20 characters long.")
-	@Pattern(regexp="^[a-zA-Z0-9]+$", message="Username must be alphanumeric with no spaces")
-	@NotBlank(message = "{message.customer.nameBlankValidation}")
+	@Size(min=3, max=20, message="{message.genForm.useridSizeValidation}")
+	@Pattern(regexp="^[a-zA-Z0-9]+$", message="{message.genForm.useridPattern}")
+	@NotBlank(message = "{message.genForm.useridBlankValidation}")
 	String username;
-	@Size(min=6,max=20, message="The password must be atleast 6 characters long.")
+	@Size(min=6,max=20, message="{message.genForm.passwordSizeValidation}")
+	@NotBlank(message = "{message.genForm.passwordBlankValidation}")
 	String password;
-	@Pattern(regexp="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}", message="Invalid email address.")
+	@NotBlank(message = "{message.genForm.emailBlankValidation}")
+	@Pattern(regexp="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}", message="{message.genForm.emailPattern}")
 	String email;
 	
 	boolean updateByEmail;

@@ -1,34 +1,61 @@
 <html xmlns:c="http://java.sun.com/jsp/jstl/core"
-xmlns:jsp="http://java.sun.com/JSP/Page"
-xmlns:spring="http://www.springframework.org/tags"
-xmlns:form="http://www.springframework.org/tags/form">
-<jsp:output omit-xml-declaration="yes"/>
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form">
+<jsp:output omit-xml-declaration="yes" />
 
-<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<jsp:directive.page contentType="text/html;charset=UTF-8" />
 
-<head><title>Spizza</title></head>
+<head>
+<title>Spizza</title>
+</head>
 <body>
-<h2><spring:message code="message.customer.formHeader" text="Welcome to" /></h2>
-<!-- <h3>Your Local is: ${pageContext.response.locale}</h3> 
-<c:out value="${sessionScope.language}"/>
-message.springmvc : <spring:message code="message.springmvc" text="default text" />
-<h3>Current Local is: ${pageContext.request.locale}</h3>-->
-<form:form commandName="customer">
-<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
-<b><spring:message code="message.customer.phoneno" text="Phone No" />:</b><form:input path="phoneNumber"/><br/>
-<form:errors path="phoneNumber" cssClass="error" /><br/>
-<b><spring:message code="message.customer.phoneno" text="Name" />:</b><form:input path="name" /><br/>
-	<form:errors path="name" cssClass="error" /><br/>
-<b><spring:message code="message.customer.address" text="Address" />:</b><form:input path="address" /><br/><br/>
-<b><spring:message code="message.customer.city" text="City" />:</b><form:input path="city" /><br/><br/>
-<b><spring:message code="message.customer.state" text="State" />:</b><form:input path="state" /><br/><br/>
-<b><spring:message code="message.customer.zip_code" text="Zip Code" />:</b><form:input path="zipCode" /><br/><br/>
-<spring:message code="message.customer.submit" text="Submit" var="submitButtonValue" />
-<spring:message code="message.customer.cancel" text="Cancel" var="cancelButtonValue" />
-<input type="submit" name="_eventId_submit" value="${submitButtonValue}" />&#160;&#160;&#160;
+	<h2>
+		<spring:message code="message.customer.formHeader" text="Welcome to" />
+	</h2>
+	<!-- <h3>Your Local is: ${pageContext.response.locale}</h3> 
+	<c:out value="${sessionScope.language}"/>
+	message.springmvc : <spring:message code="message.springmvc" text="default text" />
+	<h3>Current Local is: ${pageContext.request.locale}</h3>-->
+	<form:form commandName="customer">
+		<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+		<b><spring:message code="message.customer.phoneno" text="Phone No" />:</b>
+		<form:input path="phoneNumber" />
+		<br />
+		<form:errors path="phoneNumber" cssClass="error" />
+		<br />
+		<b><spring:message code="message.customer.name" text="Name" />:</b>
+		<form:input path="name" />
+		<br />
+		<form:errors path="name" cssClass="error" />
+		<br />
+		<b><spring:message code="message.customer.address" text="Address" />:</b>
+		<form:input path="address" />
+		<br />
+		<br />
+		<b><spring:message code="message.customer.city" text="City" />:</b>
+		<form:input path="city" />
+		<br />
+		<br />
+		<b><spring:message code="message.customer.state" text="State" />:</b>
+		<form:input path="state" />
+		<br />
+		<br />
+		<b><spring:message code="message.customer.zip_code"
+				text="Zip Code" />:</b>
+		<form:input path="zipCode" />
+		<br />
+		<br />
+		<spring:message code="message.customer.submit" text="Submit"
+			var="submitButtonValue" />
+		<spring:message code="message.customer.cancel" text="Cancel"
+			var="cancelButtonValue" />
+		<input type="submit" name="_eventId_submit"
+			value="${submitButtonValue}" />&#160;&#160;&#160;
 <input type="submit" name="_eventId_cancel" value="${cancelButtonValue}" />
-</form:form>
-<br />
-Language : <a href="?language=en">English</a>|<a href="?language=zh_CN">Chinese</a>
+	</form:form>
+	<br /> Language :
+	<a href="?language=en">English</a>|
+	<a href="?language=zh_CN">Chinese</a>
 </body>
 </html>
