@@ -17,7 +17,7 @@ import org.springframework.ui.ModelMap;
 import com.springwebtest.beans.testbeans.TestMSG;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/","/hello"})
 public class HelloController{
 	public static Logger logger=Logger.getLogger(HelloController.class.getName());
 	
