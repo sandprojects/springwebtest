@@ -41,21 +41,17 @@
 		<form:input path="state" />
 		<br />
 		<br />
-		<b><spring:message code="message.customer.zip_code"
-				text="Zip Code" />:</b>
+		<b><spring:message code="message.customer.zip_code" text="Zip Code" />:</b>
 		<form:input path="zipCode" />
 		<br />
 		<br />
-		<spring:message code="message.customer.submit" text="Submit"
-			var="submitButtonValue" />
-		<spring:message code="message.customer.cancel" text="Cancel"
-			var="cancelButtonValue" />
-		<input type="submit" name="_eventId_submit"
-			value="${submitButtonValue}" />&#160;&#160;&#160;
-<input type="submit" name="_eventId_cancel" value="${cancelButtonValue}" />
+		<spring:message code="message.customer.submit" text="Submit" var="submitButtonValue" />
+		<spring:message code="message.customer.cancel" text="Cancel" var="cancelButtonValue" />
+		<input type="submit" name="_eventId_submit" value="${submitButtonValue}" />&#160;&#160;&#160;
+		<input type="submit" name="_eventId_cancel" value="${cancelButtonValue}" />
 	</form:form>
 	<br /> Language :
-	<a href="?language=en">English</a>|
-	<a href="?language=zh_CN">Chinese</a>
+	<![CDATA[<a href="?language=en&execution=${flowExecutionKey}">English</a>|
+	<a href="?language=zh_CN&execution=${flowExecutionKey}">Chinese</a>]]>
 </body>
 </html>
