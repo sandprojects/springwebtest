@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,11 +18,32 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springwebtest.beans.pizza.domain.ImageUploadException;
 import com.springwebtest.beans.testbeans.User;
+import com.springwebtest.beans.testbeans.UserLogin;
 
 @Component
 @RequestMapping("/userMgmt")
 public class UserMgmtController {
 	
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String userLoginGet(Model model){
+		model.addAttribute(new UserLogin());
+		return "views/jsps/login.jspx";
+	}
+	@RequestMapping(value="/login", method=RequestMethod.POST)//
+	public String userLoginPost(HttpServletRequest request, @Valid UserLogin ulog, BindingResult bindingResult){
+		boolean vld = false;
+		if(bindingResult.hasErrors()){
+            System.out.println("=======>In post error..");
+	          return "views/jsps/login.jspx";
+	       }
+		else if (!bindingResult.hasErrors() && !vld){
+			//bindingResult.rejectValue("username", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+			ObjectError error = new ObjectError("vlds","{message.genForm.invalidCredentialValidation}");
+			bindingResult.addError(error);
+			//bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+		} 
+			return "views/jsps/login.jspx";
+	}
 	@RequestMapping(value="/addUser", method=RequestMethod.GET)
 	   public String addNewUser(Model model){
 		   model.addAttribute(new User());

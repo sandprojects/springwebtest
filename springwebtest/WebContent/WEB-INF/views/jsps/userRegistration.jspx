@@ -9,11 +9,11 @@ xmlns:sf="http://www.springframework.org/tags/form">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title><spring:message code="message.genForm.formPageTitle" text="User Registration Form" /></title>
+<title><spring:message code="message.genForm.regFormPageTitle" text="User Registration Form" /></title>
 </head>
 <body>
 	<div>
-		<h2><spring:message code="message.genForm.formHeader" text="User Registration Form" />:</h2>
+		<h2><spring:message code="message.genForm.regFormHeader" text="User Registration Form" />:</h2>
 		<sf:form method="POST" modelAttribute="user" enctype="multipart/form-data">
 			<fieldset>
 				<table cellspacing="0">
