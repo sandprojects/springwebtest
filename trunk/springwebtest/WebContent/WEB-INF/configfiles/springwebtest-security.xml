@@ -14,7 +14,7 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 <!-- 		<authentication-provider user-service-ref="userService"/> -->
 		<authentication-provider>
 			<user-service id="userService">
-				<user name="sandip" password="letmein" authorities="ROLE_SPRINGWEBTESTUSER,ROLE_ADMIN"/>
+				<user name="sandip" password="mypassword" authorities="ROLE_SPRINGWEBTESTUSER,ROLE_ADMIN"/>
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
