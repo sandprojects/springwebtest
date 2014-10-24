@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,33 @@ import com.springwebtest.beans.testbeans.UserLogin;
 @RequestMapping("/userMgmt")
 public class UserMgmtController {
 	
+	@RequestMapping(value="/slogin", method=RequestMethod.GET)
+	public String sUserLoginGet(@RequestParam(value="login_error", required=false) String login_error, ModelMap model){
+		//model.addAttribute(new UserLogin());
+		if (login_error == "t") {
+			// Assign an error message
+			model.put("login_error", "You have entered an invalid username or password!");
+		} else {
+			model.put("login_error", "");
+		}
+		return "views/jsps/sLogin.jspx";
+	}
+//	@RequestMapping(value="/slogin", method=RequestMethod.POST)//
+//	public String sUserLoginPost(HttpServletRequest request, @Valid UserLogin ulog, BindingResult bindingResult){
+//		boolean vld = false;
+//		if(bindingResult.hasErrors()){
+//            System.out.println("=======>In post error..");
+//	          return "views/jsps/sLogin.jspx";
+//	       }
+//		else if (!bindingResult.hasErrors() && !vld){
+//			//bindingResult.rejectValue("username", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+//			//ObjectError error = new ObjectError("vlds","message.genForm.invalidCredentialValidation");
+//			//bindingResult.addError(error);
+//			bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+//		} 
+//			return "views/jsps/sLogin.jspx";
+//	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String userLoginGet(Model model){
 		model.addAttribute(new UserLogin());
@@ -38,12 +66,13 @@ public class UserMgmtController {
 	       }
 		else if (!bindingResult.hasErrors() && !vld){
 			//bindingResult.rejectValue("username", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
-			ObjectError error = new ObjectError("vlds","{message.genForm.invalidCredentialValidation}");
-			bindingResult.addError(error);
-			//bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+			//ObjectError error = new ObjectError("vlds","message.genForm.invalidCredentialValidation");
+			//bindingResult.addError(error);
+			bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
 		} 
 			return "views/jsps/login.jspx";
 	}
+	
 	@RequestMapping(value="/addUser", method=RequestMethod.GET)
 	   public String addNewUser(Model model){
 		   model.addAttribute(new User());

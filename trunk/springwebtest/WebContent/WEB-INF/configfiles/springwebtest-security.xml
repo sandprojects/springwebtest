@@ -8,6 +8,8 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/userMgmt/slogin" access="permitAll"/>
+		<form-login login-processing-url="/userMgmt/slogin" login-page="/userMgmt/slogin" authentication-failure-url="/userMgmt/slogin?login_error=t"/>
 		<intercept-url pattern="/pizza/**" requires-channel="https" />
 	</http>
 	<authentication-manager>

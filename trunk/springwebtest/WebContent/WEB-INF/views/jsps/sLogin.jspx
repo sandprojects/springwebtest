@@ -1,0 +1,53 @@
+<html xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:sf="http://www.springframework.org/tags/form">
+
+<jsp:output omit-xml-declaration="yes" />
+
+<jsp:directive.page contentType="text/html;charset=UTF-8" />
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title><spring:message code="message.genForm.loginFormTitle" text="Login Form" /></title>
+</head>
+<body>
+	<div>
+		<h2>Sign in to springwebtest</h2>
+		
+		<spring:url var="authUrl" value="/suserMgmt/slogin" />
+		<form method="get" class="signin" action="${authUrl}">
+			<fieldset>
+				<tablecellspacing="0">
+				<tr>
+					<th><label for="username_or_email">User name:</label></th>
+					<td><input id="username_or_email" name="j_username"
+						type="text" /></td>
+				</tr>
+				<tr>
+					<th><label for="password">Password:</label></th>
+					<td><input id="password" name="j_password" type="password" />
+						<small><a href="#">Forgot?</a></small></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input id="remember_me"
+						name="_spring_security_remember_me" type="checkbox" /> <label
+						for="remember_me" class="inline">Remember me</label></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input name="commit" type="submit" value="SignIn" /></td>
+				</tr>
+				</table>
+			</fieldset>
+		</form>
+		<script type="text/javascript">
+			document.getElementById('username_or_email').focus();
+		</script>
+	</div>
+	<br /> Language :
+	<a href="?language=en">English</a>|
+	<a href="?language=zh_CN">Chinese</a>
+</body>
+</html>

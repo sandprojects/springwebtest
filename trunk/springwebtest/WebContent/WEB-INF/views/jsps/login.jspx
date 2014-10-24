@@ -29,7 +29,9 @@ xmlns:sf="http://www.springframework.org/tags/form">
 				</tr>
 				<tr>
 					<th></th>
-					<td><spring:message code="message.genForm.submit" text="Submit" var="subButton" /><input name="commit" type="submit" value="${subButton}" />
+					<td>
+<!-- 					<sf:input type="hidden" path="valErr" value="" /> -->
+					<spring:message code="message.genForm.submit" text="Submit" var="subButton" /><input name="commit" type="submit" value="${subButton}" />
 					<br /><sf:errors path="*" cssClass="error"/></td>
 				</tr>
 				</table>
