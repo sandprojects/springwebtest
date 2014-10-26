@@ -15,10 +15,10 @@
 	<div>
 		<h2>Sign in to springwebtest</h2>
 		
-		<spring:url var="authUrl" value="/suserMgmt/slogin" />
-		<form method="get" class="signin" action="${authUrl}">
+		<spring:url var="authUrl" value="/userMgmt/mylogin" />
+		<form method="post" class="signin" action="${authUrl}">
 			<fieldset>
-				<tablecellspacing="0">
+				<table cellspacing="0">
 				<tr>
 					<th><label for="username_or_email">User name:</label></th>
 					<td><input id="username_or_email" name="j_username"

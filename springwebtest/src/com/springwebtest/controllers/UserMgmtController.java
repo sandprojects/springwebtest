@@ -24,17 +24,41 @@ import com.springwebtest.beans.testbeans.UserLogin;
 @Component
 @RequestMapping("/userMgmt")
 public class UserMgmtController {
-	
-	@RequestMapping(value="/slogin", method=RequestMethod.GET)
-	public String sUserLoginGet(@RequestParam(value="login_error", required=false) String login_error, ModelMap model){
+	@RequestMapping(value="/slogout", method=RequestMethod.GET)
+	public String sUserLogOut(ModelMap model){
 		//model.addAttribute(new UserLogin());
-		if (login_error == "t") {
+		/*if (login_error == "t") {
 			// Assign an error message
 			model.put("login_error", "You have entered an invalid username or password!");
 		} else {
 			model.put("login_error", "");
-		}
+		}*/
 		return "views/jsps/sLogin.jspx";
+	}
+	@RequestMapping(value="/slogin", method=RequestMethod.GET)
+	public String sUserLoginGet(@RequestParam(value="login_error", required=false) String login_error, ModelMap model){
+		//model.addAttribute(new UserLogin());
+		/*if (login_error == "t") {
+			// Assign an error message
+			model.put("login_error", "You have entered an invalid username or password!");
+		} else {
+			model.put("login_error", "");
+		}*/
+		return "views/jsps/sLogin.jspx";
+	}
+	@RequestMapping(value="/mylogin", method=RequestMethod.POST)
+	public String sUserLoginPst(HttpServletRequest request, ModelMap model){
+		System.out.println("=======>In post sUserLoginPst..");
+		//model.addAttribute(new UserLogin());
+		//return "views/jsps/sLogin.jspx";, @RequestParam(value="login_error", required=false) String login_error
+		return "views/jsps/queryhome.jspx";
+	}
+	@RequestMapping(value="/mylogin", method=RequestMethod.GET)
+	public String sUserLoginGt(HttpServletRequest request, ModelMap model){
+		System.out.println("=======>In post sUserLoginGt..");
+		//model.addAttribute(new UserLogin());
+		//return "views/jsps/sLogin.jspx";, @RequestParam(value="login_error", required=false) String login_error
+		return "views/jsps/queryhome.jspx";
 	}
 //	@RequestMapping(value="/slogin", method=RequestMethod.POST)//
 //	public String sUserLoginPost(HttpServletRequest request, @Valid UserLogin ulog, BindingResult bindingResult){
