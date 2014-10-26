@@ -11,6 +11,6 @@
 	<a href="/springwebtest/index" >Go to index page...</a><br />
 	<a href="/springwebtest/pizza" >Order a Pizza...</a><br/>
 	<a href="/springwebtest/userMgmt/addUser">Register yourself here.</a><br/>
-	<a href="/springwebtest/userMgmt/login">Please login here.</a>
+	<a href="/springwebtest/userMgmt/slogin">Please login here.</a>
 </body>
 </html>
