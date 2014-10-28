@@ -33,7 +33,7 @@ public class UserMgmtController {
 		} else {
 			model.put("login_error", "");
 		}*/
-		return "views/jsps/sLogin.jspx";
+		return "views/jsps/login.jspx";
 	}
 	@RequestMapping(value="/slogin", method=RequestMethod.GET)
 	public String sUserLoginGet(@RequestParam(value="login_error", required=false) String login_error, ModelMap model){

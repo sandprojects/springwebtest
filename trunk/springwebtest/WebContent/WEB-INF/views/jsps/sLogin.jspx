@@ -14,8 +14,8 @@
 <body>
 	<div>
 		<h2>Sign in to springwebtest</h2>
-		
-		<spring:url var="authUrl" value="/userMgmt/mylogin" />
+<!-- 		/userMgmt/mylogin -->
+		<spring:url var="authUrl" value="/j_spring_security_check" />
 		<form method="post" class="signin" action="${authUrl}">
 			<fieldset>
 				<table cellspacing="0">
