@@ -10,14 +10,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>
-<!-- <spring:message code="message.queryHomePage" text="Query Home Page" /> -->
-Query Home
+	<spring:message code="message.queryHomePage.title" text="Query Home Page" />
 </title>
 </head>
-<body>Click here to 
+<body><spring:message code="message.gentext.clickHereTo" text="Click here to" />&#160;
 <!-- /springwebtest/userMgmt/slogout -->
 <!-- /springwebtest/static/j_spring_security_logout -->
-<a href="/springwebtest/j_spring_security_logout">Log Out</a><br />
+<a href="/springwebtest/j_spring_security_logout"><spring:message code="message.loginForm.logOut" text="Log Out" /></a><br />
 <br /> Language :
 	<a href="?language=en">English</a>|
 	<a href="?language=zh_CN">Chinese</a>
