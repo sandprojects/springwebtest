@@ -9,35 +9,37 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title><spring:message code="message.genForm.loginFormTitle" text="Login Form" /></title>
+<title><spring:message code="message.genForm.loginFormPageTitle" text="Login Form" /></title>
 </head>
 <body>
 	<div>
-		<h2>Sign in to springwebtest</h2>
+		<h2><spring:message code="message.genForm.loginFormHeader" text="Please enter valid login details" /></h2>
 <!-- 		/userMgmt/mylogin -->
 		<spring:url var="authUrl" value="/j_spring_security_check" />
 		<form method="post" class="signin" action="${authUrl}">
 			<fieldset>
 				<table cellspacing="0">
 				<tr>
-					<th><label for="username_or_email">User name:</label></th>
+					<th><label for="username_or_email"><spring:message code="message.genForm.userid" text="User Id" />:</label></th>
 					<td><input id="username_or_email" name="j_username"
 						type="text" /></td>
 				</tr>
 				<tr>
-					<th><label for="password">Password:</label></th>
-					<td><input id="password" name="j_password" type="password" />
-						<small><a href="#">Forgot?</a></small></td>
+					<th><label for="password"><spring:message code="message.genForm.password" text="Password" />:</label></th>
+					<td><input id="password" name="j_password" type="password" />&#160;
+						<small><a href="#"><spring:message code="message.loginForm.forgotAll" text="Forgot ?" /></a></small></td>
 				</tr>
 				<tr>
 					<th></th>
 					<td><input id="remember_me"
 						name="_spring_security_remember_me" type="checkbox" /> <label
-						for="remember_me" class="inline">Remember me</label></td>
+						for="remember_me" class="inline"><spring:message code="message.loginForm.remMe" text="Remember me" /></label></td>
 				</tr>
 				<tr>
 					<th></th>
-					<td><input name="commit" type="submit" value="SignIn" /></td>
+					<td>
+						<spring:message code="message.genForm.submit" text="Submit" var="subButton" />
+						<input name="commit" type="submit" value="${subButton}" /></td>
 				</tr>
 				</table>
 			</fieldset>

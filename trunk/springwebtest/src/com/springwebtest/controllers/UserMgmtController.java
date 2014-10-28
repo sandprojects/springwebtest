@@ -2,8 +2,11 @@ package com.springwebtest.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.io.FileUtils;
@@ -25,14 +28,7 @@ import com.springwebtest.beans.testbeans.UserLogin;
 @RequestMapping("/userMgmt")
 public class UserMgmtController {
 	@RequestMapping(value="/slogout", method=RequestMethod.GET)
-	public String sUserLogOut(ModelMap model){
-		//model.addAttribute(new UserLogin());
-		/*if (login_error == "t") {
-			// Assign an error message
-			model.put("login_error", "You have entered an invalid username or password!");
-		} else {
-			model.put("login_error", "");
-		}*/
+	public String sUserLogOut(){
 		return "views/jsps/login.jspx";
 	}
 	@RequestMapping(value="/slogin", method=RequestMethod.GET)
@@ -44,20 +40,28 @@ public class UserMgmtController {
 		} else {
 			model.put("login_error", "");
 		}*/
-		return "views/jsps/sLogin.jspx";
+		System.out.println("=======>In SLogin..");
+		return "views/jsps/logins.jspx";
 	}
 	@RequestMapping(value="/mylogin", method=RequestMethod.POST)
 	public String sUserLoginPst(HttpServletRequest request, ModelMap model){
 		System.out.println("=======>In post sUserLoginPst..");
-		//model.addAttribute(new UserLogin());
-		//return "views/jsps/sLogin.jspx";, @RequestParam(value="login_error", required=false) String login_error
 		return "views/jsps/queryhome.jspx";
 	}
 	@RequestMapping(value="/mylogin", method=RequestMethod.GET)
-	public String sUserLoginGt(HttpServletRequest request, ModelMap model){
+	public String sUserLoginGt(HttpServletRequest request, HttpServletResponse response, ModelMap model, Principal principal){
 		System.out.println("=======>In post sUserLoginGt..");
-		//model.addAttribute(new UserLogin());
-		//return "views/jsps/sLogin.jspx";, @RequestParam(value="login_error", required=false) String login_error
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
+		//HttpSession hs=request.getSession(false);
+		if(principal!=null)
+			System.out.println("=======>User name is: " + principal.getName());
+		else
+			{
+				System.out.println("=======>No User..!!\n=======>Redirecting to login page...!");
+				return "redirect:/userMgmt/slogin";
+			}			
 		return "views/jsps/queryhome.jspx";
 	}
 //	@RequestMapping(value="/slogin", method=RequestMethod.POST)//
@@ -65,15 +69,15 @@ public class UserMgmtController {
 //		boolean vld = false;
 //		if(bindingResult.hasErrors()){
 //            System.out.println("=======>In post error..");
-//	          return "views/jsps/sLogin.jspx";
+//	          return "views/jsps/logins.jspx";
 //	       }
 //		else if (!bindingResult.hasErrors() && !vld){
-//			//bindingResult.rejectValue("username", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
-//			//ObjectError error = new ObjectError("vlds","message.genForm.invalidCredentialValidation");
+//			//bindingResult.rejectValue("username", "message.loginForm.invalidCredentialValidation", "Please enter valid login details");
+//			//ObjectError error = new ObjectError("vlds","message.loginForm.invalidCredentialValidation");
 //			//bindingResult.addError(error);
-//			bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+//			bindingResult.rejectValue("password", "message.loginForm.invalidCredentialValidation", "Please enter valid login details");
 //		} 
-//			return "views/jsps/sLogin.jspx";
+//			return "views/jsps/logins.jspx";
 //	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -89,10 +93,10 @@ public class UserMgmtController {
 	          return "views/jsps/login.jspx";
 	       }
 		else if (!bindingResult.hasErrors() && !vld){
-			//bindingResult.rejectValue("username", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
-			//ObjectError error = new ObjectError("vlds","message.genForm.invalidCredentialValidation");
+			//bindingResult.rejectValue("username", "message.loginForm.invalidCredentialValidation", "Please enter valid login details");
+			//ObjectError error = new ObjectError("vlds","message.loginForm.invalidCredentialValidation");
 			//bindingResult.addError(error);
-			bindingResult.rejectValue("password", "message.genForm.invalidCredentialValidation", "Please enter valid login details");
+			bindingResult.rejectValue("password", "message.loginForm.invalidCredentialValidation", "Please enter valid login details");
 		} 
 			return "views/jsps/login.jspx";
 	}
