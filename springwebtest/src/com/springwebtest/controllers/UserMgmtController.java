@@ -3,13 +3,17 @@ package com.springwebtest.controllers;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Locale;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,46 +28,28 @@ import com.springwebtest.beans.pizza.domain.ImageUploadException;
 import com.springwebtest.beans.testbeans.User;
 import com.springwebtest.beans.testbeans.UserLogin;
 
-@Component
-@RequestMapping("/userMgmt")
-public class UserMgmtController {
+	@Component
+	@RequestMapping("/userMgmt")
+	public class UserMgmtController {
+	
+	@Resource(name = "messageSource")
+    private MessageSource messageSource;
+		
 	@RequestMapping(value="/slogout", method=RequestMethod.GET)
 	public String sUserLogOut(){
 		return "views/jsps/login.jspx";
 	}
 	@RequestMapping(value="/slogin", method=RequestMethod.GET)
-	public String sUserLoginGet(@RequestParam(value="login_error", required=false) String login_error, ModelMap model){
-		//model.addAttribute(new UserLogin());
-		/*if (login_error == "t") {
-			// Assign an error message
-			model.put("login_error", "You have entered an invalid username or password!");
-		} else {
-			model.put("login_error", "");
-		}*/
+	public String sUserLoginGet(HttpServletRequest request, @RequestParam(value="login_error", required=false) String login_error, ModelMap model){
+		Locale locale = LocaleContextHolder.getLocale();
+		if((String)request.getParameter("login_error")!=null){
+			System.out.println("=======>In SLogin has error..");
+			model.put("loginError", messageSource.getMessage("message.loginForm.invalidCredentialValidation", null, locale));
+		}
 		System.out.println("=======>In SLogin..");
 		return "views/jsps/logins.jspx";
 	}
-	@RequestMapping(value="/mylogin", method=RequestMethod.POST)
-	public String sUserLoginPst(HttpServletRequest request, ModelMap model){
-		System.out.println("=======>In post sUserLoginPst..");
-		return "views/jsps/queryhome.jspx";
-	}
-	@RequestMapping(value="/mylogin", method=RequestMethod.GET)
-	public String sUserLoginGt(HttpServletRequest request, HttpServletResponse response, ModelMap model, Principal principal){
-		System.out.println("=======>In post sUserLoginGt..");
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-		response.setDateHeader("Expires", 0); // Proxies.
-		//HttpSession hs=request.getSession(false);
-		if(principal!=null)
-			System.out.println("=======>User name is: " + principal.getName());
-		else
-			{
-				System.out.println("=======>No User..!!\n=======>Redirecting to login page...!");
-				return "redirect:/userMgmt/slogin";
-			}			
-		return "views/jsps/queryhome.jspx";
-	}
+
 //	@RequestMapping(value="/slogin", method=RequestMethod.POST)//
 //	public String sUserLoginPost(HttpServletRequest request, @Valid UserLogin ulog, BindingResult bindingResult){
 //		boolean vld = false;
