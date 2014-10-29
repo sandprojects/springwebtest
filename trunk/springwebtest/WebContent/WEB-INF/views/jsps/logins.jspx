@@ -39,7 +39,8 @@
 					<th></th>
 					<td>
 						<spring:message code="message.genForm.submit" text="Submit" var="subButton" />
-						<input name="commit" type="submit" value="${subButton}" /></td>
+						<input name="commit" type="submit" value="${subButton}" />
+						<br /><br /><font size="3" color="red">${loginError}</font></td>
 				</tr>
 				</table>
 			</fieldset>
