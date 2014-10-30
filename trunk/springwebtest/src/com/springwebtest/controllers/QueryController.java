@@ -1,6 +1,7 @@
 package com.springwebtest.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.springwebtest.beans.testbeans.City;
+import com.springwebtest.beans.testbeans.CityService;
 
 @Controller
 @RequestMapping("/queries")
@@ -30,7 +34,9 @@ public class QueryController {
 			{
 				System.out.println("=======>No User..!!\n=======>Redirecting to login page...!");
 				return "redirect:/userMgmt/slogin";
-			}			
+			}
+		//model.addAttribute("seloption", CityService.getSeloption());
+		model.addAttribute("cties", new CityService().getCties());//cties
 		return "views/jsps/queryhome.jspx";
 	}
 }

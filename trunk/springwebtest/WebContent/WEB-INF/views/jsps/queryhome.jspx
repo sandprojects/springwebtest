@@ -14,11 +14,16 @@
 </title>
 </head>
 <body><spring:message code="message.gentext.clickHereTo" text="Click here to" />&#160;
-<!-- /springwebtest/userMgmt/slogout -->
-<!-- /springwebtest/static/j_spring_security_logout -->
 <a href="/springwebtest/j_spring_security_logout"><spring:message code="message.loginForm.logOut" text="Log Out" /></a><br />
 <br /> Language :
 	<a href="?language=en">English</a>|
 	<a href="?language=zh_CN">Chinese</a>
+	<br /><br />
+<!-- 	${seloption['opt']} -->
+	<select>
+		<c:forEach items="${cties}" var="element"> 
+			<option >${element.name}</option>
+		</c:forEach>
+	</select>
 </body>
 </html>
