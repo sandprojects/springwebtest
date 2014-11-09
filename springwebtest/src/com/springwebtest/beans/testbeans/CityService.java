@@ -6,20 +6,20 @@ import java.util.Properties;
 
 public class CityService {
 	
-	private static Properties seloption;
+	private Properties seloption;
 
-	public static Properties getSeloption() {
-		return CityService.seloption;
+	public Properties getSeloption() {
+		return this.seloption;
 	}
 
-	public static void setSeloption(Properties seloption) {
-		CityService.seloption = seloption;
+	public void setSeloption(Properties seloption) {
+		this.seloption = seloption;
 	}
 	
 	public List<City> cties;
 
 	public List<City> getCties() {
-		return cties;
+		return this.cties;
 	}
 
 	public void setCties(List<City> cties) {

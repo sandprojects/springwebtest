@@ -2,6 +2,9 @@ package com.springwebtest.beans.testbeans;
 
 public class City {
 		private String name;
+		private String state;
+		private int population;
+		
 		public String getName() {
 			return name;
 		}
@@ -20,6 +23,4 @@ public class City {
 		public void setPopulation(int population) {
 			this.population = population;
 		}
-		private String state;
-		private int population;
 }
