@@ -20,28 +20,36 @@
 	<a href="?language=zh_CN">Chinese</a>
 	<br /><br />
 <!-- 	${seloption['opt']} -->
-	<select>
-		<option value="NA" selected="selected">All</option>
-		<c:forEach items="${cties}" var="element"> 
-			<option value="${element.name}">${element.name}</option>
-		</c:forEach>
-	</select>
-	
-	<br /><br /><hr /><br />
-	
-	<table border="1">
-			<tr>
-				<td>&#160;&#160;<b>Name</b>&#160;&#160;</td>
-				<td>&#160;&#160;<b>State</b>&#160;&#160;</td>
-				<td>&#160;&#160;<b>Population</b>&#160;&#160;</td>
-			</tr>
-			<c:forEach items="${cties}" var="cityElements"> 
-				<tr>
-					<td>${cityElements.name}</td>
-					<td>${cityElements.state}</td>
-					<td>${cityElements.population}</td>
-				</tr>
+	<form action="/springwebtest/queries/home" method="post" >
+		<select name="selCity" onchange="this.form.submit()">
+			<option value="NA" >Please select</option>
+			<option value="All">All</option>
+			<c:forEach items="${cties}" var="element"> 
+<%-- 			<c:if test="${not empty selSelct}" ><c:out value="selected=\"selected\"" /></c:if> --%>
+				<option value="${element.name}" >${element.name}</option>
 			</c:forEach>
-	</table>
+		</select>
+	</form>
+	
+	<c:if test="${not empty cties}">
+	
+		<br /><br /><hr /><br />
+	
+		<table border="1">
+				<tr>
+					<td>&#160;&#160;<b>Name</b>&#160;&#160;</td>
+					<td>&#160;&#160;<b>State</b>&#160;&#160;</td>
+					<td>&#160;&#160;<b>Population</b>&#160;&#160;</td>
+				</tr>
+				<c:forEach items="${cties}" var="cityElements"> 
+					<tr>
+						<td>${cityElements.name}</td>
+						<td>${cityElements.state}</td>
+						<td>${cityElements.population}</td>
+					</tr>
+				</c:forEach>
+		</table>
+	</c:if>
+	
 </body>
 </html>

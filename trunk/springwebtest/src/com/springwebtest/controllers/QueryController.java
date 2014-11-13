@@ -21,11 +21,26 @@ import com.springwebtest.beans.testbeans.CityService;
 @Controller
 @RequestMapping("/queries")
 public class QueryController {
+	
+	public List<City> cit;
+	CityService cS;
+	ApplicationContext ac;
+	
 	@RequestMapping(value="/home", method=RequestMethod.POST)
 	public String sUserLoginPst(HttpServletRequest request, ModelMap model){
 		System.out.println("=======>In post sUserLoginPst..");
+		String optStr = request.getParameter("selCity");
+		System.out.println("=======>optStr: " + optStr);
+		ac=new ClassPathXmlApplicationContext("com/springwebtest/configurations/testbeans-config.xml");
+		cS=(CityService)ac.getBean("cityService");
+		cit=cS.getCties();
+		model.addAttribute("selSelct", optStr);
+		model.addAttribute("selopt", cS.getSeloption());//cties
+		//cit.retainAll(new List<City>().add((City)ac.getBean(optStr.toLowerCase())))
+		model.addAttribute("cties", cit);//cties
 		return "views/jsps/queryhome.jspx";
 	}
+	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String sUserLoginGt(HttpServletRequest request, HttpServletResponse response, ModelMap model, Principal principal){
 		System.out.println("=======>In post sUserLoginGt..");
@@ -40,9 +55,10 @@ public class QueryController {
 				return "redirect:/userMgmt/slogin";
 			}
 		//model.addAttribute("seloption", CityService.getSeloption());
-		ApplicationContext ac=new ClassPathXmlApplicationContext("com/springwebtest/configurations/testbeans-config.xml");
-		CityService cS=(CityService)ac.getBean("cityService");
-		List<City> cit=cS.getCties();
+		ac=new ClassPathXmlApplicationContext("com/springwebtest/configurations/testbeans-config.xml");
+		cS=(CityService)ac.getBean("cityService");
+		cit=cS.getCties();
+		
 		if(cit==null){
 			System.out.println("=======>cit is blank...");
 		}
